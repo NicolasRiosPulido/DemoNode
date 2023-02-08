@@ -7,7 +7,7 @@ var app = express();
 app.get('/', function (req, res) {
 
   var connection = mysql.createConnection({
-    host: 'database-2.cnwt5f9pbnof.us-east-1.rds.amazonaws.com',
+    host: 'database-1.cnwt5f9pbnof.us-east-1.rds.amazonaws.com',
     user: 'admin',
     password: 'Nicolas86'
   });
