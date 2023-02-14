@@ -9,7 +9,8 @@ app.get('/', function (req, res) {
   var connection = mysql.createConnection({
     host: 'database-1.cnwt5f9pbnof.us-east-1.rds.amazonaws.com',
     user: 'admin',
-    password: 'Nicolas86'
+    password: 'Nicolas86',
+    database: 'sys'
   });
 
   connection.connect(function (err) {
@@ -19,10 +20,13 @@ app.get('/', function (req, res) {
     } else {
       conection = 'connected';
     }
-    res.send({
-      Output: "Hello World!",
-      desdeNode: 'aca desde node Nicolas',
-      conection
+    connection.query('SELECT * FROM users', (err, result) => {
+      res.send({
+        Output: "Hello World!",
+        desdeNode: 'aca desde node Nicolas',
+        result,
+        conection,
+      });
     });
   });
 });
