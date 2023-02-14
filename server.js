@@ -1,8 +1,11 @@
 var port = process.env.PORT || 3000;
 var express = require('express');
+var cors = require('cors');
 var mysql = require('mysql');
 
 var app = express();
+
+app.use(cors())
 
 app.get('/', function (req, res) {
 
