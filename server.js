@@ -1,36 +1,15 @@
 var port = process.env.PORT || 3000;
 var express = require('express');
 var cors = require('cors');
-var mysql = require('mysql');
 
 var app = express();
 
 app.use(cors())
 
 app.get('/', function (req, res) {
-
-  var connection = mysql.createConnection({
-    host: 'database-1.cnwt5f9pbnof.us-east-1.rds.amazonaws.com',
-    user: 'admin',
-    password: 'Nicolas86',
-    database: 'sys'
-  });
-
-  connection.connect(function (err) {
-    let conection = ''
-    if (err) {
-      conection = 'error connecting';
-    } else {
-      conection = 'connected';
-    }
-    connection.query('SELECT * FROM users', (err, result) => {
-      res.send({
-        Output: "Hello World!",
-        desdeNode: 'aca desde node Nicolas',
-        result,
-        conection,
-      });
-    });
+  res.send({
+    Output: "Hello World!",
+    desdeNode: 'aca desde node Nicolas',
   });
 });
 
